@@ -1,0 +1,1 @@
+const accountStorage={uid:null,getItem(k){return this.uid?localStorage.getItem('stageone5:'+this.uid+':'+k):null},setItem(k,v){if(!this.uid)throw Error('Inicia sesión');localStorage.setItem('stageone5:'+this.uid+':'+k,v)}};
