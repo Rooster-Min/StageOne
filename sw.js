@@ -1,31 +1,31 @@
 // Estrategia 2: CACHE WITH NETWORK FALLBACK (adaptada a StageOne).
-const CACHE = 'stageone-base-740';
-const CACHE_DINAMICO = 'stageone-dinamico-740';
-const CACHE_ESTATICO = 'stageone-estatico-740';
-const CACHE_INMUTABLE = 'stageone-inmutable-740';
+const CACHE = 'stageone-base-750';
+const CACHE_DINAMICO = 'stageone-dinamico-750';
+const CACHE_ESTATICO = 'stageone-estatico-750';
+const CACHE_INMUTABLE = 'stageone-inmutable-750';
 const BASE = [
   "./",
   "./index.html",
   "./manifest.json",
   "./offline.html",
-  "./css/style.css?v=740",
-  "./js/account-local.js?v=740",
-  "./js/app.js?v=740",
-  "./js/artist57.js?v=740",
-  "./js/beta594.js?v=740",
-  "./js/cloud72.js?v=740",
-  "./js/crop.js?v=740",
-  "./js/experience.js?v=740",
-  "./js/firebase.js?v=740",
-  "./js/library.js?v=740",
-  "./js/media56.js?v=740",
-  "./js/music71.js?v=740",
-  "./js/notifications.js?v=740",
-  "./js/polish593.js?v=740",
-  "./js/social.js?v=740",
-  "./js/stories592.js?v=740",
-  "./js/studio59.js?v=740",
-  "./js/visual591.js?v=740"
+  "./css/style.css?v=750",
+  "./js/account-local.js?v=750",
+  "./js/app.js?v=750",
+  "./js/artist57.js?v=750",
+  "./js/beta594.js?v=750",
+  "./js/cloud72.js?v=750",
+  "./js/crop.js?v=750",
+  "./js/experience.js?v=750",
+  "./js/firebase.js?v=750",
+  "./js/library.js?v=750",
+  "./js/media56.js?v=750",
+  "./js/music71.js?v=750",
+  "./js/notifications.js?v=750",
+  "./js/polish593.js?v=750",
+  "./js/social.js?v=750",
+  "./js/stories592.js?v=750",
+  "./js/studio59.js?v=750",
+  "./js/visual591.js?v=750"
 ];
 const ESTATICOS = [
   "./img/aero-wallpaper.jpg",
@@ -76,7 +76,7 @@ self.addEventListener('install', evento => {
   evento.waitUntil(Promise.all([
     caches.open(CACHE).then(c => c.addAll(BASE.map(x => new Request(new URL(x,scope),{cache:'reload'})))),
     caches.open(CACHE_ESTATICO).then(c => c.addAll(ESTATICOS)),
-    caches.open(CACHE_INMUTABLE)
+    caches.open(CACHE_INMUTABLE).then(c => Promise.allSettled(["app","auth","firestore","storage"].map(n => c.add(`https://www.gstatic.com/firebasejs/13.4.0/firebase-${n}.js`))))
   ]));
 });
 self.addEventListener('activate', evento => {
