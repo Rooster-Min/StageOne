@@ -1,4 +1,4 @@
-# StageOne 7.0 — Public Beta
+# StageOne 7.4 — Offline Update
 
 Red social musical independiente, PWA estática. Esta versión es una prueba de interfaz con cuentas Firebase, no una red social multiusuario completa.
 
@@ -20,3 +20,6 @@ Red social musical independiente, PWA estática. Esta versión es una prueba de 
 6.0.2: iconos PWA oficiales, favicon y Apple touch icon.
 
 7.0: selector de tipo de cuenta adaptado a Silver, Dark y Frutiger Aero.
+
+## 7.4 — Caché primero
+Service Worker con estrategia 2, cachés versionados, recursos relativos a GitHub Pages y límite de 50 imágenes dinámicas. SDK Firebase público versionado bajo demanda; persistencia Firestore habilitada cuando el navegador la admite. La primera visita requiere internet; audio remoto no se descarga automáticamente. La actualización se activa al cerrar todas las pestañas anteriores y volver a abrir. No se modifican reglas ni configuración del proyecto Firebase.
